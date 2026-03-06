@@ -74,14 +74,14 @@
 │              │                                                  │
 │  [ U ]       │   Рекомендации                                   │
 │  UNTITLED    │   ─────────────────────────────────────────────  │
-│              │   ▶  ████  Midnight Drive · UNTITLED  ≋≋≋  3:42 │
-│  ─ ГЛАВНОЕ   │      ████  Neon Pulse · ARTIST_01           4:17 │
-│  ⌂  Главная  │      ████  Void Signal · ARTIST_02          5:03 │
-│  🔍 Поиск    │      ████  Static Dreams · ARTIST_03       3:58  │
-│  ♪  Стрим   │      ████  Low Light · ARTIST_04             2:51 │
+│              │   ▶   ████  Midnight Drive · UNTITLED  ≋≋≋ 3:42 │
+│  ─ ГЛАВНОЕ   │       ████  Neon Pulse · ARTIST_01          4:17 │
+│  ⌂  Главная  │       ████  Void Signal · ARTIST_02         5:03 │
+│  🔍 Поиск   │       ████  Static Dreams · ARTIST_03       3:58 │
+│  ♪  Стрим    │       ████  Low Light · ARTIST_04           2:51 │
 │              │                                                  │
 │  ─ БИБЛИОТЕКА│                                                  │
-│  ♥  Лайки   │                                                   │
+│  ♥  Лайки    │                                                  │
 │  ≡  Плейлисты│                                                  │
 │              │                                                  │
 │  ──────────  │                                                  │
