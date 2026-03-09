@@ -279,6 +279,7 @@ nav.scrolled{
 .btn-dl-mac:hover{background:var(--g3);box-shadow:0 8px 40px rgba(255,255,255,.07)}
 .btn-dl-mac::before{display:none}
 
+.btn-gh{
   display:flex;align-items:center;gap:10px;
   padding:15px 28px;
   border:1px solid var(--bd2);border-radius:10px;
@@ -762,6 +763,28 @@ footer{
 /* ─── COUNTER ANIMATION ─── */
 .count-up{display:inline}
 
+/* ─── PERFORMANCE: will-change & contain ─── */
+.hero-grid{will-change:transform}
+.hero-orb{will-change:transform}
+.hero-logo{will-change:transform}
+.cta-logo{will-change:transform}
+.app-window{will-change:transform,opacity}
+#noise{will-change:background-position}
+.marquee-track{will-change:transform}
+#features,#how,#mockup,#cta{contain:layout style}
+
+/* ─── REDUCED MOTION ─── */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+
+/* ─── TOUCH: hide custom cursor ─── */
+@media(hover:none){
+  body{cursor:auto}
+  #cursor{display:none}
+  .btn-dl,.btn-dl-mac,.nav-dl,.btn-gh,.nav-link,.feat-card,.step{cursor:pointer}
+}
+
 /* ─── PILL BADGES ─── */
 .pill{
   display:inline-flex;align-items:center;gap:6px;
@@ -771,6 +794,139 @@ footer{
 }
 .pill-dot{width:5px;height:5px;border-radius:50%;background:#4ade80;animation:pillBlink 2s ease-in-out infinite}
 @keyframes pillBlink{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* ─── HAMBURGER BUTTON ─── */
+.nav-burger{
+  display:none;
+  flex-direction:column;justify-content:center;align-items:center;
+  width:36px;height:36px;gap:5px;
+  background:none;border:none;cursor:pointer;padding:4px;
+  flex-shrink:0;
+}
+.nav-burger span{
+  display:block;width:22px;height:1.5px;
+  background:var(--w);border-radius:2px;
+  transition:transform .3s,opacity .3s;
+}
+.nav-burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+/* ─── MOBILE MENU ─── */
+.mobile-menu{
+  display:none;
+  position:fixed;top:0;left:0;right:0;bottom:0;
+  z-index:99;
+  background:rgba(0,0,0,.97);
+  backdrop-filter:blur(20px);
+  flex-direction:column;align-items:center;justify-content:center;
+  gap:32px;
+  opacity:0;pointer-events:none;
+  transition:opacity .3s;
+}
+.mobile-menu.open{opacity:1;pointer-events:all}
+.mobile-menu-link{
+  font-family:'Unbounded',sans-serif;font-weight:600;
+  font-size:24px;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--g6);text-decoration:none;
+  transition:color .15s;
+}
+.mobile-menu-link:hover,.mobile-menu-link:active{color:var(--w)}
+.mobile-menu-btns{display:flex;gap:12px;margin-top:8px}
+
+/* ─── TABLET ─── */
+@media(max-width:1024px){
+  nav{padding:16px 24px}
+  #hero{padding:100px 24px 80px}
+  #features{padding:80px 24px;max-width:100%}
+  #how{padding:80px 24px;max-width:100%}
+  #mockup{padding:60px 24px}
+  #cta{padding:80px 24px}
+  footer{padding:24px 24px}
+  .features-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+/* ─── MOBILE ─── */
+@media(max-width:767px){
+  /* Nav */
+  nav{padding:14px 20px}
+  .nav-links{display:none}
+  nav>div:last-child{display:none} /* hide win/mac buttons in nav */
+  .nav-burger{display:flex}
+  .mobile-menu{display:flex}
+
+  /* Hero */
+  #hero{padding:90px 20px 70px;min-height:100svh}
+  .hero-logo{width:72px;height:72px;font-size:44px;border-radius:16px}
+  .hero-pre{font-size:8px;letter-spacing:.25em}
+  .hero-title{font-size:clamp(48px,14vw,80px)}
+  .hero-sub{font-size:10px;max-width:100%;text-align:center}
+  .hero-actions{flex-direction:column;width:100%;max-width:300px;gap:10px;margin-top:32px}
+  .btn-dl{width:100%;justify-content:center;padding:14px 24px}
+  .hero-meta{gap:20px;margin-top:36px}
+  .hero-meta-n{font-size:18px}
+  .hero-meta-l{font-size:7px}
+  .hero-scroll{bottom:24px}
+
+  /* Mockup */
+  #mockup{padding:48px 16px;overflow-x:hidden}
+  .app-window{
+    transform:none!important;
+    border-radius:10px;
+    overflow-x:auto;
+  }
+  .aw-body{height:auto;min-height:280px}
+  .aw-sidebar{width:140px;min-width:140px}
+  .aw-main{padding:12px 10px}
+  .aw-pl-center{width:120px}
+  .aw-vol{display:none}
+  .aw-pl-right{display:none}
+
+  /* Features */
+  #features{padding:60px 20px;max-width:100%}
+  .features-grid{grid-template-columns:1fr}
+  .feat-card{padding:28px 24px}
+  .section-title{font-size:clamp(28px,8vw,48px)}
+  .section-sub{font-size:10px;margin-bottom:40px}
+
+  /* How */
+  #how{padding:60px 20px;max-width:100%}
+  .steps{grid-template-columns:1fr;gap:2px;margin-top:40px}
+  .step{padding:28px 24px;border-radius:0}
+  .step:first-child{border-radius:14px 14px 0 0}
+  .step:last-child{border-radius:0 0 14px 14px}
+  .step-num{font-size:48px;margin-bottom:16px}
+  .step-connector{
+    top:auto;right:auto;bottom:0;left:50%;
+    transform:translateX(-50%);
+    width:40px;height:2px;
+  }
+
+  /* CTA */
+  #cta{padding:60px 20px}
+  .cta-title{font-size:clamp(36px,11vw,64px)}
+  .cta-btns{flex-direction:column;align-items:center;gap:10px}
+  .cta-btns .btn-dl{width:100%;max-width:280px;justify-content:center}
+  .cta-sub{font-size:10px;padding:0 8px}
+
+  /* Footer */
+  footer{
+    padding:28px 20px;
+    flex-direction:column;
+    align-items:center;
+    gap:16px;
+    text-align:center;
+  }
+  .footer-links{justify-content:center}
+}
+
+/* ─── SMALL MOBILE ─── */
+@media(max-width:380px){
+  .hero-title{font-size:42px}
+  .nav-logo .nav-name{display:none}
+  .hero-meta{gap:12px}
+  .hero-meta-sep{height:20px}
+}
 
 </style>
 </head>
@@ -799,7 +955,25 @@ footer{
       <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:middle;margin-right:6px"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>Mac
     </a>
   </div>
+  <button class="nav-burger" id="navBurger" aria-label="Меню">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a class="mobile-menu-link" href="#features" data-close>Функции</a>
+  <a class="mobile-menu-link" href="#how" data-close>Как работает</a>
+  <a class="mobile-menu-link" href="#cta" data-close>Скачать</a>
+  <div class="mobile-menu-btns">
+    <a class="btn-dl" href="https://www.dropbox.com/scl/fi/n9qgwhxjuk44esob9norc/UNTITLED-Setup-0.1.0.exe?rlkey=8q7d4nqlxr21ylspi6k5i9bf1&st=jdwqxzab&dl=1" style="font-size:9px;padding:12px 24px">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/></svg>Windows
+    </a>
+    <a class="btn-dl btn-dl-mac" href="https://www.dropbox.com/scl/fi/iy3lrfnnk97rsjxs5wesq/UNTITLED-2.0.0-arm64.dmg?rlkey=p8afyn2vv6ohjyqaf90msm2ig&st=b5a7ha2j&dl=1" style="font-size:9px;padding:12px 24px">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>macOS
+    </a>
+  </div>
+</div>
 
 <!-- HERO -->
 <section id="hero">
@@ -1177,83 +1351,114 @@ footer{
 </footer>
 
 <script>
-// ─── CURSOR ───
-const cursor = document.getElementById('cursor');
-let mx = -100, my = -100;
-document.addEventListener('mousemove', e => {
-  mx = e.clientX; my = e.clientY;
-  cursor.style.left = mx + 'px';
-  cursor.style.top = my + 'px';
-});
-document.addEventListener('mousedown', () => cursor.classList.add('big'));
-document.addEventListener('mouseup',   () => cursor.classList.remove('big'));
-document.querySelectorAll('a,button,.feat-card,.step,.aw-track,.btn-dl,.btn-gh,.nav-dl').forEach(el => {
-  el.addEventListener('mouseenter', () => cursor.classList.add('big'));
-  el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
-});
+// ─── TOUCH DETECTION ───
+const isTouch = window.matchMedia('(hover:none)').matches;
+
+// ─── CURSOR (desktop only) ───
+if (!isTouch) {
+  const cursor = document.getElementById('cursor');
+  let mx = -100, my = -100, rafPending = false;
+  let gx = 0, gy = 0;
+  const heroGrid = document.querySelector('.hero-grid');
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    gx = (e.clientX / window.innerWidth - 0.5) * 20;
+    gy = (e.clientY / window.innerHeight - 0.5) * 20;
+    if (!rafPending) {
+      rafPending = true;
+      requestAnimationFrame(() => {
+        cursor.style.left = mx + 'px';
+        cursor.style.top = my + 'px';
+        if (heroGrid) heroGrid.style.transform = `translate(${gx}px,${gy}px)`;
+        rafPending = false;
+      });
+    }
+  });
+
+  document.addEventListener('mousedown', () => cursor.classList.add('big'));
+  document.addEventListener('mouseup',   () => cursor.classList.remove('big'));
+  document.querySelectorAll('a,button,.feat-card,.step,.aw-track,.btn-dl,.btn-gh,.nav-dl').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('big'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
+  });
+}
 
 // ─── NAV SCROLL ───
 const nav = document.getElementById('nav');
+let scrollTicking = false;
 window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 40);
-});
+  if (!scrollTicking) {
+    requestAnimationFrame(() => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+      scrollTicking = false;
+    });
+    scrollTicking = true;
+  }
+}, {passive: true});
+
+// ─── HAMBURGER MENU ───
+const burger = document.getElementById('navBurger');
+const mobileMenu = document.getElementById('mobileMenu');
+if (burger && mobileMenu) {
+  const toggleMenu = (open) => {
+    burger.classList.toggle('open', open);
+    mobileMenu.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
+  burger.addEventListener('click', () => toggleMenu(!burger.classList.contains('open')));
+  mobileMenu.querySelectorAll('[data-close]').forEach(el => {
+    el.addEventListener('click', () => toggleMenu(false));
+  });
+}
 
 // ─── REVEAL ON SCROLL ───
-const revealEls = document.querySelectorAll('.reveal');
 const revealObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('visible'); }
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObs.unobserve(e.target); // stop observing after reveal
+    }
   });
-}, { threshold: 0.1 });
-revealEls.forEach(el => revealObs.observe(el));
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
 // ─── APP WINDOW REVEAL ───
 const appWindow = document.getElementById('appWindow');
-const winObs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) appWindow.classList.add('visible');
-  });
-}, { threshold: 0.2 });
-winObs.observe(appWindow);
+if (appWindow) {
+  const winObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { appWindow.classList.add('visible'); winObs.disconnect(); }
+    });
+  }, { threshold: 0.15 });
+  winObs.observe(appWindow);
+}
 
 // ─── COUNT UP ───
 function animateCount(el, target, duration) {
-  if (target === '∞') { 
+  if (target === '∞') {
     setTimeout(() => { el.textContent = '∞'; }, duration * 0.7);
     return;
   }
-  const start = 0;
   const end = parseInt(target);
   const startTime = performance.now();
   function update(now) {
-    const elapsed = now - startTime;
-    const progress = Math.min(elapsed / duration, 1);
+    const progress = Math.min((now - startTime) / duration, 1);
     const eased = 1 - Math.pow(1 - progress, 3);
-    el.textContent = Math.round(start + (end - start) * eased);
+    el.textContent = Math.round(end * eased);
     if (progress < 1) requestAnimationFrame(update);
   }
   requestAnimationFrame(update);
 }
-
-const countEls = document.querySelectorAll('.count-up');
 const countObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
-      const target = e.target.dataset.target;
-      animateCount(e.target, target, 1200);
+      animateCount(e.target, e.target.dataset.target, 1200);
       countObs.unobserve(e.target);
     }
   });
 }, { threshold: 0.5 });
-countEls.forEach(el => countObs.observe(el));
-
-// ─── HERO GRID PARALLAX ───
-const heroGrid = document.querySelector('.hero-grid');
-document.addEventListener('mousemove', e => {
-  const x = (e.clientX / window.innerWidth - 0.5) * 20;
-  const y = (e.clientY / window.innerHeight - 0.5) * 20;
-  heroGrid.style.transform = `translate(${x}px, ${y}px)`;
-});
+document.querySelectorAll('.count-up').forEach(el => countObs.observe(el));
 
 // ─── SMOOTH ANCHOR ───
 document.querySelectorAll('a[href^="#"]').forEach(a => {
