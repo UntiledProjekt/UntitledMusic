@@ -1,0 +1,23 @@
+{
+  "name": "UNTITLED",
+  "identifier": "com.untitled.music",
+  "apps": [
+    {
+      "name": "UNTITLED",
+      "bundleIdentifier": "com.untitled.music",
+      "developerName": "Untitled_proj.",
+      "version": "0.1",
+      "versionDate": "2025-03-13",
+      "versionDescription": "Первый релиз приложения.",
+      "downloadURL": "https://www.dropbox.com/scl/fi/iklubqnv1zab6okukyrjf/UNTITLED.ipa?rlkey=jrbhwkwtrsqe5pv83dnyzcxil&st=rloh23na&dl=1",
+      "iconURL": "https://i.ibb.co/tPFdKcgB/icon.png",
+      "tintColor": "#007AFF",
+      "size": 15000000,
+      "description": "Самый лучший клиент SoundCoud!",
+      "screenshotURLs": [
+        "https://i.ibb.co/JjD7jThm/photo-2026-03-13-15-13-30.jpg",
+        "https://i.ibb.co/5gGs5bCt/photo-2026-03-13-15-13-49.jpg"
+      ]
+    }
+  ]
+}
