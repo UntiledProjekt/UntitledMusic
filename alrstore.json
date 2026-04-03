@@ -7,8 +7,7 @@
     "website": "https://untiledprojekt.github.io/UntitledMusic/",
     "tintColor": "#373737",
     "featuredApps": [
-        "com.example.myapp",
-        "com.example.anotherapp"
+        "com.untitled.music",
     ],
     "apps": [
         {
