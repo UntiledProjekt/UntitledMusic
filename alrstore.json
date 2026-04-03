@@ -7,12 +7,12 @@
     "website": "https://untiledprojekt.github.io/UntitledMusic/",
     "tintColor": "#373737",
     "featuredApps": [
-        "com.untitled.music",
+        "com.unt1tl3d.music",
     ],
     "apps": [
         {
             "name": "Untitled Music",
-            "bundleIdentifier": "com.untitled.music",
+            "bundleIdentifier": "com.unt1tl3d.music",
             "developerName": "Untitled",
             "subtitle": "Listen your music without blur and restrictions",
             "localizedDescription": "Listen your music without blur and restrictions.",
