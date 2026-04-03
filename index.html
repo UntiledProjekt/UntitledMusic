@@ -313,6 +313,52 @@ nav.scrolled{
 .btn-dl-alt svg{width:16px;height:16px;flex-shrink:0}
 .altstore-icon{width:18px;height:18px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
 
+/* ─── iOS SPLIT BUTTON GROUP ─── */
+.ios-btn-group{
+  display:flex;align-items:stretch;
+  border:1px solid rgba(52,199,89,.4);
+  border-radius:10px;overflow:hidden;
+  transition:box-shadow .2s,border-color .2s;
+  cursor:none;
+}
+.ios-btn-group:hover{
+  border-color:rgba(52,199,89,.65);
+  box-shadow:0 8px 40px rgba(52,199,89,.15);
+}
+.ios-btn-group:hover .ios-btn-main,
+.ios-btn-group:hover .ios-btn-ipa{
+  transform:translateY(-2px);
+}
+.ios-btn-main{
+  display:flex;align-items:center;gap:10px;
+  padding:16px 28px;
+  background:rgba(52,199,89,.1);
+  color:#34c759;
+  font-family:'Unbounded',sans-serif;font-weight:700;
+  font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+  text-decoration:none;cursor:none;
+  transition:background .2s,color .15s,transform .2s;
+  border-right:1px solid rgba(52,199,89,.3);
+}
+.ios-btn-main:hover{background:rgba(52,199,89,.2);color:#5dde79}
+.ios-btn-main svg{width:16px;height:16px;flex-shrink:0}
+.ios-btn-divider{
+  width:1px;background:rgba(52,199,89,.3);flex-shrink:0;
+}
+.ios-btn-ipa{
+  display:flex;align-items:center;gap:8px;
+  padding:16px 20px;
+  background:rgba(52,199,89,.06);
+  color:#34c759;
+  font-family:'Unbounded',sans-serif;font-weight:700;
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  text-decoration:none;cursor:none;
+  transition:background .2s,color .15s,transform .2s;
+  white-space:nowrap;
+}
+.ios-btn-ipa:hover{background:rgba(52,199,89,.18);color:#5dde79}
+.ios-btn-ipa svg{width:13px;height:13px;flex-shrink:0;opacity:.8}
+
 .btn-gh{
   display:flex;align-items:center;gap:10px;
   padding:15px 28px;
@@ -899,6 +945,9 @@ footer{
   .hero-sub{font-size:10px;max-width:100%;text-align:center}
   .hero-actions{flex-direction:column;width:100%;max-width:300px;gap:10px;margin-top:32px}
   .btn-dl,.btn-dl-alt{width:100%;justify-content:center;padding:14px 24px}
+  .ios-btn-group{width:100%;max-width:300px}
+  .ios-btn-main{flex:1;justify-content:center;padding:14px 16px}
+  .ios-btn-ipa{padding:14px 18px;justify-content:center}
   .hero-meta{gap:20px;margin-top:36px}
   .hero-meta-n{font-size:18px}
   .hero-meta-l{font-size:7px}
@@ -943,6 +992,9 @@ footer{
   .cta-title{font-size:clamp(36px,11vw,64px)}
   .cta-btns{flex-direction:column;align-items:center;gap:10px}
   .cta-btns .btn-dl,.cta-btns .btn-dl-alt{width:100%;max-width:280px;justify-content:center}
+  .cta-btns .ios-btn-group{width:100%;max-width:280px}
+  .cta-btns .ios-btn-main{flex:1;justify-content:center;padding:14px 16px}
+  .cta-btns .ios-btn-ipa{padding:14px 18px;justify-content:center}
   .cta-sub{font-size:10px;padding:0 8px}
 
   /* Footer */
@@ -1047,14 +1099,16 @@ footer{
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
         macOS
       </a>
-      <a class="btn-dl-alt" href="altstore://source?url=https://raw.githubusercontent.com/UntiledProjekt/UntitledMusic/main/alrstore.json">
-        <!-- AltStore icon: stylized "A" in a shield -->
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px">
-          <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z"/>
-          <path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        AltStore iOS
-      </a>
+      <div class="ios-btn-group">
+        <a class="ios-btn-main" href="altstore://source?url=https://raw.githubusercontent.com/UntiledProjekt/UntitledMusic/main/alrstore.json">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L4.5 6.5v11L12 22l7.5-4.5v-11L12 2zm0 2.3l5.5 3.3v6.8L12 17.7 6.5 14.4V7.6L12 4.3zm-1.1 3.4L7.8 14h1.6l.7-1.7h4l.7 1.7h1.6l-3.1-6.3h-2.4zm1.1 1.1l1.4 3h-2.8l1.4-3z"/></svg>
+          Alt Store
+        </a>
+        <a class="ios-btn-ipa" href="https://www.dropbox.com/scl/fi/9ocvsx7mn4h272ekpfeqt/Payload.ipa?rlkey=phoely87dyu6gtgbuyauyswss&st=t4wqaxbh&dl=1">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3m0 12l-4-4m4 4l4-4M3 17v2a2 2 0 002 2h14a2 2 0 002-2v-2"/></svg>
+          IPA
+        </a>
+      </div>
     </div>
 
     <div class="hero-meta">
@@ -1384,12 +1438,16 @@ footer{
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
       macOS
     </a>
-    <a class="btn-dl-alt" href="altstore://source?url=https://raw.githubusercontent.com/UntiledProjekt/UntitledMusic/main/alrstore.json">
-      <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px;flex-shrink:0">
-        <path d="M12 2L4.5 6.5v11L12 22l7.5-4.5v-11L12 2zm0 2.3l5.5 3.3v6.8L12 17.7 6.5 14.4V7.6L12 4.3zm-1.1 3.4L7.8 14h1.6l.7-1.7h4l.7 1.7h1.6l-3.1-6.3h-2.4zm1.1 1.1l1.4 3h-2.8l1.4-3z"/>
-      </svg>
-      AltStore iOS
-    </a>
+    <div class="ios-btn-group">
+      <a class="ios-btn-main" href="altstore://source?url=https://raw.githubusercontent.com/UntiledProjekt/UntitledMusic/main/alrstore.json">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L4.5 6.5v11L12 22l7.5-4.5v-11L12 2zm0 2.3l5.5 3.3v6.8L12 17.7 6.5 14.4V7.6L12 4.3zm-1.1 3.4L7.8 14h1.6l.7-1.7h4l.7 1.7h1.6l-3.1-6.3h-2.4zm1.1 1.1l1.4 3h-2.8l1.4-3z"/></svg>
+        Alt Store
+      </a>
+      <a class="ios-btn-ipa" href="https://www.dropbox.com/scl/fi/9ocvsx7mn4h272ekpfeqt/Payload.ipa?rlkey=phoely87dyu6gtgbuyauyswss&st=t4wqaxbh&dl=1">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3m0 12l-4-4m4 4l4-4M3 17v2a2 2 0 002 2h14a2 2 0 002-2v-2"/></svg>
+        IPA
+      </a>
+    </div>
   </div>
 
   <p class="cta-meta reveal">Бесплатно и с открытым исходным кодом. <a href="#">Лицензия MIT.</a></p>
