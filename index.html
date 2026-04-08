@@ -446,82 +446,187 @@ nav.scrolled{
 /* App layout */
 .aw-body{display:flex;height:380px}
 .aw-sidebar{
-  width:190px;background:#050505;border-right:1px solid rgba(255,255,255,.05);
+  width:68px;background:#050505;border-right:1px solid rgba(255,255,255,.05);
   padding:0;flex-shrink:0;
   display:flex;flex-direction:column;
 }
 .aw-logo{
-  display:flex;align-items:center;gap:9px;
-  padding:13px 14px 16px;border-bottom:1px solid rgba(255,255,255,.05);
-  margin-bottom:12px;
-}
-.aw-logo-u{
-  width:26px;height:26px;background:#fff;border-radius:5px;
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Unbounded',sans-serif;font-weight:900;font-size:15px;color:#000;
-  flex-shrink:0;
-}
-.aw-logo-name{
-  font-family:'Unbounded',sans-serif;font-weight:600;
-  font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:#fff;
+  display:none;
 }
 .aw-nav-lbl{
-  font-size:7px;letter-spacing:.2em;text-transform:uppercase;
-  color:#444;padding:0 8px 4px 14px;
+  display:none;
 }
 .aw-nav-item{
-  display:flex;align-items:center;gap:8px;
-  padding:7px 14px;border-radius:5px;margin:0 6px 2px;
-  font-size:9px;color:#555;
+  display:flex;align-items:center;justify-content:center;
+  padding:10px 0;border-radius:10px;margin:0 6px 2px;
+  font-size:0;color:#666;cursor:pointer;
+  transition:background .15s,color .15s;
 }
+.aw-nav-item:hover{background:rgba(255,255,255,.05)}
 .aw-nav-item.active{background:#fff;color:#000}
-.aw-nav-item svg{width:10px;height:10px;flex-shrink:0;opacity:.7}
+.aw-nav-item svg{width:20px;height:20px;flex-shrink:0}
 .aw-sidebar-bottom{
   margin-top:auto;padding:10px 6px;
-  border-top:1px solid rgba(255,255,255,.05);
+  border-top:1px solid rgba(255,255,255,.05);flex-shrink:0;
 }
 .aw-profile{
-  display:flex;align-items:center;gap:8px;padding:8px 8px;
-  border-radius:5px;background:#0e0e0e;border:1px solid rgba(255,255,255,.06);
+  display:flex;align-items:center;justify-content:center;gap:0;padding:7px;
+  border-radius:6px;background:#141414;border:1px solid rgba(255,255,255,.07);
 }
 .aw-avatar{
-  width:24px;height:24px;border-radius:50%;background:#333;
+  width:30px;height:30px;border-radius:50%;background:#282828;
   display:flex;align-items:center;justify-content:center;
-  font-size:9px;font-weight:700;flex-shrink:0;color:#888;
+  font-size:10px;font-weight:700;flex-shrink:0;color:#888;
 }
-.aw-pname{font-size:8px;color:#888;font-family:'Space Mono',monospace}
+.aw-pname{display:none}
 
 /* Main area */
 .aw-main{
-  flex:1;background:#0c0c0c;padding:16px 18px;overflow:hidden;
+  flex:1;background:#0c0c0c;padding:0;overflow:hidden;
 }
-.aw-section-title{
-  font-family:'Unbounded',sans-serif;font-weight:600;
-  font-size:11px;color:#fff;letter-spacing:.05em;
+.aw-likes-hero{
+  position:relative;min-height:180px;overflow:hidden;
+  display:flex;align-items:flex-end;margin-bottom:16px;
+}
+.aw-likes-hero-bg{
+  position:absolute;inset:-20px;
+  background-size:cover;background-position:center;
+  filter:blur(28px) brightness(.4) saturate(.7);
+  transform:scale(1.1);background-color:#1e1e1e;
+}
+.aw-likes-hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(0,0,0,0) 0%,rgba(0,0,0,.8) 100%);
+}
+.aw-likes-hero-info{
+  position:relative;z-index:1;
+  display:flex;align-items:flex-end;gap:14px;padding:16px 18px;width:100%;
+}
+.aw-likes-cover{
+  width:80px;height:80px;border-radius:8px;
+  background:#1e1e1e;flex-shrink:0;overflow:hidden;
+  box-shadow:0 4px 20px rgba(0,0,0,.5);
+}
+.aw-artist-name{
+  font-family:'Unbounded',sans-serif;font-weight:900;
+  font-size:16px;letter-spacing:.04em;color:#fff;line-height:1.2;
+  margin-bottom:4px;
+}
+.aw-artist-handle{
+  font-size:9px;color:#aaa;margin-bottom:3px;
+}
+.aw-artist-stats{
+  font-size:9px;color:#888;
+}
+.aw-hero-actions{
+  display:flex;align-items:center;gap:6px;margin-top:10px;
+}
+.aw-hero-play-btn{
+  display:flex;align-items:center;gap:6px;
+  padding:8px 18px;background:#fff;color:#000;
+  border:none;border-radius:6px;cursor:pointer;
+  font-family:'Space Mono',monospace;font-size:8.5px;
+  font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  transition:opacity .15s;
+}
+.aw-hero-play-btn:hover{opacity:.85}
+.aw-hero-play-btn svg{width:10px;height:10px}
+.aw-hero-shuffle-btn{
+  display:flex;align-items:center;gap:6px;
+  padding:8px 14px;background:transparent;color:#aaa;
+  border:1px solid rgba(255,255,255,.13);border-radius:6px;cursor:pointer;
+  font-family:'Space Mono',monospace;font-size:8.5px;
+  font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  transition:all .15s;
+}
+.aw-hero-shuffle-btn:hover{color:#fff;border-color:#888}
+.aw-hero-shuffle-btn svg{width:10px;height:10px}
+.aw-likes-filter-bar{
+  display:flex;gap:6px;padding:12px 16px 2px;align-items:center;
+}
+.aw-likes-filter-btn{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:5px 12px 5px 9px;border-radius:20px;
+  border:1.5px solid #141414;background:transparent;
+  color:#777;cursor:pointer;
+  transition:background .15s,color .15s,border-color .15s,transform .1s;
+  font-family:'Space Mono',monospace;font-size:9px;
+  font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  white-space:nowrap;
+}
+.aw-likes-filter-btn:hover{
+  border-color:#777;color:#fff;transform:translateY(-1px);
+}
+.aw-likes-filter-btn.active{
+  background:#fff;border-color:#fff;color:#000;
+}
+.aw-likes-filter-btn.active:hover{
+  background:#bbb;border-color:#bbb;color:#000;transform:translateY(-1px);
+}
+.aw-lfb-icon{
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;line-height:1;opacity:.85;
+}
+.aw-lfb-label{
+  line-height:1;
+}
+.aw-lfb-count{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:16px;height:15px;padding:0 4px;border-radius:8px;
+  font-size:8.5px;font-weight:800;letter-spacing:.04em;
+  background:rgba(255,255,255,.12);color:inherit;
+  transition:background .15s;
+}
+.aw-likes-filter-btn.active .aw-lfb-count{
+  background:rgba(0,0,0,.18);
+}
+.aw-tracks{padding:6px 16px 16px;display:flex;flex-direction:column;gap:0}
+
+/* ── Home view styles ── */
+.home-greeting{padding:20px 18px 16px}
+.home-greeting-time{
+  font-size:9px;letter-spacing:.2em;text-transform:uppercase;
+  color:#888;margin-bottom:6px;
+}
+.home-greeting-name{
+  font-family:'Unbounded',sans-serif;font-weight:900;
+  font-size:26px;letter-spacing:-.01em;color:#fff;
+}
+.home-section{margin-bottom:24px;padding:0 18px}
+.home-section-header{
+  display:flex;align-items:center;justify-content:space-between;
   margin-bottom:12px;
 }
-.aw-tracks{display:flex;flex-direction:column;gap:2px}
+.home-section-title{
+  font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#888;
+}
+.home-section-btn{
+  font-size:8.5px;color:#888;background:none;border:none;
+  cursor:pointer;letter-spacing:.06em;transition:color .12s;
+}
+.home-section-btn:hover{color:#ccc}
 .aw-track{
   display:flex;align-items:center;gap:10px;
-  padding:8px 10px;border-radius:6px;
-  transition:background .15s;
+  padding:6px 8px;border-radius:8px;
+  transition:background .15s;cursor:pointer;
 }
 .aw-track:hover,.aw-track.playing{background:rgba(255,255,255,.05)}
 .aw-track.playing .aw-tr-num{color:#fff}
-.aw-tr-num{width:14px;text-align:center;font-size:8px;color:#444}
+.aw-track.playing .aw-tr-name{color:#fff}
+.aw-tr-num{width:18px;text-align:center;font-size:9px;color:#666}
 .aw-tr-art{
-  width:32px;height:32px;border-radius:4px;background:#1a1a1a;
+  width:38px;height:38px;border-radius:5px;background:#1a1a1a;
   flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;
 }
 .aw-tr-art-inner{
   width:100%;height:100%;
   display:flex;align-items:center;justify-content:center;
-  font-size:10px;color:#444;
+  font-size:12px;color:#555;
 }
 .aw-tr-info{flex:1;min-width:0}
-.aw-tr-name{font-size:9px;color:#ccc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.aw-tr-artist{font-size:8px;color:#555;margin-top:2px}
-.aw-tr-dur{font-size:8px;color:#444}
+.aw-tr-name{font-size:11px;font-weight:600;color:#e5e5e5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.aw-tr-artist{font-size:9px;color:#666;margin-top:2px}
+.aw-tr-dur{font-size:9px;color:#666}
 
 /* Waveform fake */
 .aw-tr-wave{
@@ -529,7 +634,7 @@ nav.scrolled{
   display:flex;align-items:center;gap:1px;
 }
 .aw-wave-bar{
-  width:2px;border-radius:1px;background:#333;
+  width:2px;border-radius:1px;background:#282828;
   animation:wavePulse 0.8s ease-in-out infinite;
 }
 .aw-track.playing .aw-wave-bar{background:rgba(255,255,255,.4)}
@@ -544,11 +649,11 @@ nav.scrolled{
 .aw-pl-art{
   width:38px;height:38px;border-radius:5px;background:#1a1a1a;
   flex-shrink:0;display:flex;align-items:center;justify-content:center;
-  font-size:12px;font-family:'Unbounded',sans-serif;font-weight:900;color:#444;
+  font-size:14px;font-family:'Unbounded',sans-serif;font-weight:900;color:#555;
 }
 .aw-pl-meta{flex:1;min-width:0}
-.aw-pl-title{font-size:9px;color:#ddd;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.aw-pl-artist{font-size:8px;color:#555;margin-top:2px}
+.aw-pl-title{font-size:10px;font-weight:700;color:#e5e5e5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.aw-pl-artist{font-size:9px;color:#666;margin-top:2px}
 .aw-pl-center{
   display:flex;flex-direction:column;align-items:center;gap:6px;
   width:180px;flex-shrink:0;
@@ -557,16 +662,18 @@ nav.scrolled{
 .aw-pl-ctrls{display:flex;align-items:center;gap:10px}
 .aw-pl-btn{
   width:20px;height:20px;display:flex;align-items:center;justify-content:center;
-  color:#555;
+  color:#666;cursor:pointer;transition:color .15s;
 }
+.aw-pl-btn:hover{color:#fff}
 .aw-pl-btn.main{
   width:28px;height:28px;background:#fff;border-radius:50%;color:#000;
   box-shadow:0 0 15px rgba(255,255,255,.15);
 }
+.aw-pl-btn.main:hover{opacity:.85}
 .aw-pl-btn svg{width:10px;height:10px}
 .aw-pl-btn.main svg{width:11px;height:11px}
 .aw-pl-bar{
-  width:100%;height:2px;background:#1e1e1e;border-radius:1px;overflow:hidden;
+  width:100%;height:2px;background:#282828;border-radius:1px;overflow:hidden;
 }
 .aw-pl-fill{
   height:100%;background:#fff;border-radius:1px;width:35%;
@@ -581,8 +688,8 @@ nav.scrolled{
   display:flex;align-items:center;gap:8px;
   flex:1;justify-content:flex-end;
 }
-.aw-vol{width:60px;height:2px;background:#222;border-radius:1px;position:relative}
-.aw-vol-fill{width:70%;height:100%;background:#555;border-radius:1px}
+.aw-vol{width:60px;height:2px;background:#282828;border-radius:1px;position:relative}
+.aw-vol-fill{width:70%;height:100%;background:#666;border-radius:1px}
 
 /* Playing animation inside track art */
 @keyframes wavePulse{
@@ -1030,16 +1137,16 @@ footer{
     <div class="nav-u">U</div>
     <span class="nav-name">Untitled</span>
   </a>
-  <div class="nav-links">
+  <div class="nav-links" style="position:absolute;left:50%;transform:translateX(-50%)">
     <a class="nav-link" href="#features">Функции</a>
     <a class="nav-link" href="#how">Как работает</a>
     <a class="nav-link" href="#cta">Скачать</a>
   </div>
   <div style="display:flex;gap:8px;align-items:center">
-    <a class="nav-dl" href="#cta">
+    <a class="nav-dl" href="https://www.dropbox.com/scl/fi/cwk76u7i1ohnh1vxp5c0p/UNTITLED-Setup-0.5.0.exe?rlkey=opta5dczlypvzl91tnfdqwadn&st=4toxq9m0&dl=1">
       <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:inline-block;vertical-align:middle;margin-right:6px"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/></svg>Win
     </a>
-    <a class="nav-dl" href="#cta">
+    <a class="nav-dl" href="https://www.dropbox.com/scl/fi/9oqywz90whdecdmbj9sp2/UNTITLED-0.5.0-universal.dmg?rlkey=1kb9hbdcx15ij7yrxha5hr718&st=x8ch2spx&dl=1">
       <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:middle;margin-right:6px"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>Mac
     </a>
     <a class="nav-dl-alt" href="altstore://source?url=https://raw.githubusercontent.com/UntiledProjekt/UntitledMusic/main/alrstore.json">
@@ -1057,10 +1164,10 @@ footer{
   <a class="mobile-menu-link" href="#how" data-close>Как работает</a>
   <a class="mobile-menu-link" href="#cta" data-close>Скачать</a>
   <div class="mobile-menu-btns">
-    <a class="btn-dl" href="https://www.dropbox.com/scl/fi/nmgd4ge2w9rruj6asvvwx/UNTITLED-Setup-0.4.0.exe?rlkey=aat4nsqai671qo21h1e4enft0&st=kxztcjvn&dl=1" style="font-size:9px;padding:12px 24px">
+    <a class="btn-dl" href="https://www.dropbox.com/scl/fi/cwk76u7i1ohnh1vxp5c0p/UNTITLED-Setup-0.5.0.exe?rlkey=opta5dczlypvzl91tnfdqwadn&st=4toxq9m0&dl=1" style="font-size:9px;padding:12px 24px">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/></svg>Windows
     </a>
-    <a class="btn-dl btn-dl-mac" href="https://www.dropbox.com/scl/fi/b3u7os6zk8ac8asoufquc/UNTITLED-0.4.0-universal.dmg?rlkey=4ye55tgcd3m3u6u6zo61x3996&st=t2b28nxg&dl=1" style="font-size:9px;padding:12px 24px">
+    <a class="btn-dl btn-dl-mac" href="https://www.dropbox.com/scl/fi/9oqywz90whdecdmbj9sp2/UNTITLED-0.5.0-universal.dmg?rlkey=1kb9hbdcx15ij7yrxha5hr718&st=x8ch2spx&dl=1" style="font-size:9px;padding:12px 24px">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>macOS
     </a>
     <a class="btn-dl-alt" href="altstore://source?url=https://raw.githubusercontent.com/UntiledProjekt/UntitledMusic/main/alrstore.json" style="font-size:9px;padding:12px 24px">
@@ -1091,11 +1198,11 @@ footer{
     </p>
 
     <div class="hero-actions">
-      <a class="btn-dl" href="#cta">
+      <a class="btn-dl" href="https://www.dropbox.com/scl/fi/cwk76u7i1ohnh1vxp5c0p/UNTITLED-Setup-0.5.0.exe?rlkey=opta5dczlypvzl91tnfdqwadn&st=4toxq9m0&dl=1">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/></svg>
         Windows
       </a>
-      <a class="btn-dl btn-dl-mac" href="#cta">
+      <a class="btn-dl btn-dl-mac" href="https://www.dropbox.com/scl/fi/9oqywz90whdecdmbj9sp2/UNTITLED-0.5.0-universal.dmg?rlkey=1kb9hbdcx15ij7yrxha5hr718&st=x8ch2spx&dl=1">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
         macOS
       </a>
@@ -1128,11 +1235,6 @@ footer{
       </div>
     </div>
   </div>
-
-  <div class="hero-scroll">
-    <div class="hero-scroll-txt">Прокрутить</div>
-    <div class="hero-scroll-line"></div>
-  </div>
 </section>
 
 <!-- MOCKUP -->
@@ -1150,56 +1252,86 @@ footer{
     <div class="aw-body">
       <!-- Sidebar -->
       <div class="aw-sidebar">
-        <div class="aw-logo">
-          <div class="aw-logo-u">U</div>
-          <span class="aw-logo-name">Untitled</span>
+        <div style="padding:0 6px;margin-top:12px">
+          <div class="aw-nav-item" data-view="home">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+          </div>
+          <div class="aw-nav-item" data-view="trending">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
         </div>
+        <div style="height:1px;background:rgba(255,255,255,.05);margin:10px 4px"></div>
         <div style="padding:0 6px">
-          <div class="aw-nav-lbl" style="margin-bottom:3px">Главное</div>
-          <div class="aw-nav-item active">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
-            Главная
+          <div class="aw-nav-item active" data-view="liked">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
           </div>
-          <div class="aw-nav-item" style="color:#444">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            Поиск
-          </div>
-          <div class="aw-nav-item" style="color:#444">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-            Стрим
-          </div>
-        </div>
-        <div style="padding:8px 6px 0;margin-top:8px">
-          <div class="aw-nav-lbl" style="margin-bottom:3px">Библиотека</div>
-          <div class="aw-nav-item" style="color:#444">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-            Лайки
-          </div>
-          <div class="aw-nav-item" style="color:#444">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
-            Плейлисты
+          <div class="aw-nav-item" data-view="playlists">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
           </div>
         </div>
         <div class="aw-sidebar-bottom">
           <div class="aw-profile">
             <div class="aw-avatar">u</div>
-            <div class="aw-pname">user</div>
           </div>
         </div>
       </div>
 
       <!-- Main content -->
-      <div class="aw-main">
-        <div class="aw-section-title">Рекомендации</div>
-        <div class="aw-tracks">
+      <div class="aw-main" id="awMain">
+        <!-- Liked View -->
+        <div class="aw-view" id="awViewLiked" style="display:block">
+        <div class="aw-likes-hero">
+          <div class="aw-likes-hero-bg"></div>
+          <div class="aw-likes-hero-overlay"></div>
+          <div class="aw-likes-hero-info">
+            <div class="aw-likes-cover">
+              <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:24px">♥</div>
+            </div>
+            <div>
+              <div class="aw-artist-name">ПОНРАВИВШИЕСЯ ТРЕКИ</div>
+              <div class="aw-artist-handle">user</div>
+              <div class="aw-artist-stats"><span>5 треков</span></div>
+              <div class="aw-hero-actions">
+                <button class="aw-hero-play-btn" id="awPlayBtn">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                  PLAY
+                </button>
+                <button class="aw-hero-shuffle-btn" id="awShuffleBtn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
+                  SHUFFLE
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="aw-likes-filter-bar">
+          <button class="aw-likes-filter-btn active" data-filter="all">
+            <span class="aw-lfb-icon">♥</span>
+            <span class="aw-lfb-label">Все</span>
+            <span class="aw-lfb-count">5</span>
+          </button>
+          <button class="aw-likes-filter-btn" data-filter="soundcloud">
+            <span class="aw-lfb-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="11" height="11"><path d="M1.175 12.225c-.017 0-.033.01-.04.025l-.65 4.125.65 4.1c.007.016.023.026.04.026.018 0 .033-.01.04-.026l.74-4.1-.74-4.125c-.007-.015-.022-.025-.04-.025z"/></svg>
+            </span>
+            <span class="aw-lfb-label">SoundCloud</span>
+            <span class="aw-lfb-count">3</span>
+          </button>
+          <button class="aw-likes-filter-btn" data-filter="untitled">
+            <span class="aw-lfb-icon" style="font-weight:900;font-size:10px;font-family:Unbounded,sans-serif">U</span>
+            <span class="aw-lfb-label">Untitled</span>
+            <span class="aw-lfb-count">2</span>
+          </button>
+        </div>
+        <div class="aw-tracks" id="awTracksList">
           <!-- Playing track -->
-          <div class="aw-track playing">
+          <div class="aw-track playing" data-track="0">
             <span class="aw-tr-num">▶</span>
             <div class="aw-tr-art">
-              <div class="aw-tr-art-inner" style="background:#1a1a1a;color:#555;font-size:8px;font-family:'Unbounded',sans-serif;font-weight:700">U</div>
+              <div class="aw-tr-art-inner" style="background:#1a1a1a;font-family:'Unbounded',sans-serif;font-weight:700">U</div>
             </div>
             <div class="aw-tr-info">
-              <div class="aw-tr-name" style="color:#fff">ЧЯСТУШКИ</div>
+              <div class="aw-tr-name">ЧЯСТУШКИ</div>
               <div class="aw-tr-artist">UNTITLED</div>
             </div>
             <div class="aw-tr-wave">
@@ -1219,10 +1351,10 @@ footer{
               <div class="aw-wave-bar h7"></div>
               <div class="aw-wave-bar h4"></div>
             </div>
-            <div class="aw-tr-dur" style="color:#666">3:42</div>
+            <div class="aw-tr-dur">3:42</div>
           </div>
           <!-- Other tracks -->
-          <div class="aw-track">
+          <div class="aw-track" data-track="1">
             <span class="aw-tr-num">2</span>
             <div class="aw-tr-art"><div class="aw-tr-art-inner">♫</div></div>
             <div class="aw-tr-info">
@@ -1231,7 +1363,7 @@ footer{
             </div>
             <div class="aw-tr-dur">4:17</div>
           </div>
-          <div class="aw-track">
+          <div class="aw-track" data-track="2">
             <span class="aw-tr-num">3</span>
             <div class="aw-tr-art"><div class="aw-tr-art-inner">♫</div></div>
             <div class="aw-tr-info">
@@ -1240,7 +1372,7 @@ footer{
             </div>
             <div class="aw-tr-dur">5:03</div>
           </div>
-          <div class="aw-track">
+          <div class="aw-track" data-track="3">
             <span class="aw-tr-num">4</span>
             <div class="aw-tr-art"><div class="aw-tr-art-inner">♫</div></div>
             <div class="aw-tr-info">
@@ -1249,7 +1381,7 @@ footer{
             </div>
             <div class="aw-tr-dur">3:58</div>
           </div>
-          <div class="aw-track">
+          <div class="aw-track" data-track="4">
             <span class="aw-tr-num">5</span>
             <div class="aw-tr-art"><div class="aw-tr-art-inner">♫</div></div>
             <div class="aw-tr-info">
@@ -1257,6 +1389,215 @@ footer{
               <div class="aw-tr-artist">ARTIST_04</div>
             </div>
             <div class="aw-tr-dur">2:51</div>
+          </div>
+        </div>
+        </div>
+
+        <!-- Home View -->
+        <div class="aw-view" id="awViewHome" style="display:none">
+          <div class="home-greeting">
+            <div class="home-greeting-time">ДОБРЫЙ ВЕЧЕР</div>
+            <div class="home-greeting-name">@user</div>
+          </div>
+          <div id="my-wave-container" style="padding:0 18px;margin-bottom:24px">
+            <div class="my-wave-hero" style="position:relative;border-radius:10px;overflow:hidden;min-height:200px;display:flex;align-items:flex-end;background:#1e1e1e">
+              <div class="my-wave-overlay" style="position:absolute;inset:0;background:linear-gradient(to bottom, #0c0c0c 0%, transparent 30%, transparent 60%, #0c0c0c 100%),linear-gradient(to right, #0c0c0c 0%, transparent 12%, transparent 88%, #0c0c0c 100%)"></div>
+              <div class="my-wave-content" style="position:relative;z-index:1;padding:20px;width:100%;display:flex;align-items:flex-end;justify-content:space-between;gap:16px">
+                <div>
+                  <div class="my-wave-label" style="font-size:7.5px;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:6px">Персональный микс</div>
+                  <div class="my-wave-title" style="font-family:'Unbounded',sans-serif;font-weight:900;font-size:24px;letter-spacing:-.01em;color:#fff;line-height:1.1;margin-bottom:8px">Моя волна</div>
+                  <div class="my-wave-sub" style="font-size:9px;color:rgba(255,255,255,0.4);letter-spacing:.06em">50 треков · обновляется каждый раз</div>
+                </div>
+                <div class="my-wave-actions" style="display:flex;gap:10px;flex-shrink:0;align-items:center">
+                  <button class="my-wave-shuffle" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(8px);cursor:pointer;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.75);transition:all .15s;flex-shrink:0" onmouseover="this.style.background='rgba(255,255,255,.2)';this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,.1)';this.style.color='rgba(255,255,255,0.75)'">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:16px;height:16px"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
+                  </button>
+                  <button class="my-wave-play" style="width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,0.95);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#000;transition:transform .15s,background .15s;flex-shrink:0;box-shadow:0 4px 24px rgba(0,0,0,0.5)" onmouseover="this.style.transform='scale(1.08)';this.style.background='#fff'" onmouseout="this.style.transform='scale(1)';this.style.background='rgba(255,255,255,0.95)'">
+                    <svg viewBox="0 0 24 24" fill="currentColor" style="width:22px;height:22px;margin-left:2px"><path d="M8 5v14l11-7z"/></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="home-section">
+            <div class="home-section-header">
+              <div class="home-section-title">РЕКОМЕНДАЦИИ ДЛЯ ВАС</div>
+              <button class="home-section-btn">Показать все →</button>
+            </div>
+            <div class="carousel" style="display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px">
+              <div class="c-card" style="flex-shrink:0;width:140px;scroll-snap-align:start;cursor:pointer;transition:opacity .12s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+                <div class="c-card-art" style="width:140px;height:140px;border-radius:8px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);overflow:hidden;position:relative;margin-bottom:8px;display:flex;align-items:center;justify-content:center">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" style="width:48px;height:48px;opacity:0.9"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                </div>
+                <div class="c-card-title" style="font-size:10px;font-weight:700;color:#e5e5e5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px">Chill Vibes Mix</div>
+                <div class="c-card-sub" style="font-size:9px;color:#666">Playlist · 24 tracks</div>
+              </div>
+              <div class="c-card" style="flex-shrink:0;width:140px;scroll-snap-align:start;cursor:pointer;transition:opacity .12s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+                <div class="c-card-art" style="width:140px;height:140px;border-radius:8px;background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%);overflow:hidden;position:relative;margin-bottom:8px;display:flex;align-items:center;justify-content:center">
+                  <svg viewBox="0 0 24 24" fill="white" style="width:48px;height:48px;opacity:0.9"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                </div>
+                <div class="c-card-title" style="font-size:10px;font-weight:700;color:#e5e5e5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px">Hot Tracks 2026</div>
+                <div class="c-card-sub" style="font-size:9px;color:#666">Playlist · 50 tracks</div>
+              </div>
+              <div class="c-card" style="flex-shrink:0;width:140px;scroll-snap-align:start;cursor:pointer;transition:opacity .12s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+                <div class="c-card-art" style="width:140px;height:140px;border-radius:8px;background:linear-gradient(135deg,#4facfe 0%,#00f2fe 100%);overflow:hidden;position:relative;margin-bottom:8px;display:flex;align-items:center;justify-content:center">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" style="width:48px;height:48px;opacity:0.9"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                </div>
+                <div class="c-card-title" style="font-size:10px;font-weight:700;color:#e5e5e5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px">Deep House</div>
+                <div class="c-card-sub" style="font-size:9px;color:#666">Playlist · 36 tracks</div>
+              </div>
+            </div>
+          </div>
+          <div class="home-section">
+            <div class="home-section-header">
+              <div class="home-section-title">ПОПУЛЯРНЫЕ АРТИСТЫ</div>
+            </div>
+            <div class="carousel" style="display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px">
+              <div class="c-card" style="flex-shrink:0;width:140px;scroll-snap-align:start;cursor:pointer;transition:opacity .12s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+                <div class="c-card-art round" style="width:140px;height:140px;border-radius:50%;background:linear-gradient(135deg,#fa709a 0%,#fee140 100%);overflow:hidden;position:relative;margin-bottom:8px;display:flex;align-items:center;justify-content:center">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" style="width:48px;height:48px;opacity:0.9"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <div class="c-card-title" style="font-size:10px;font-weight:700;color:#e5e5e5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px">Artist Name</div>
+                <div class="c-card-sub" style="font-size:9px;color:#666">1.2M followers</div>
+              </div>
+              <div class="c-card" style="flex-shrink:0;width:140px;scroll-snap-align:start;cursor:pointer;transition:opacity .12s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+                <div class="c-card-art round" style="width:140px;height:140px;border-radius:50%;background:linear-gradient(135deg,#30cfd0 0%,#330867 100%);overflow:hidden;position:relative;margin-bottom:8px;display:flex;align-items:center;justify-content:center">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" style="width:48px;height:48px;opacity:0.9"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                </div>
+                <div class="c-card-title" style="font-size:10px;font-weight:700;color:#e5e5e5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px">DJ Producer</div>
+                <div class="c-card-sub" style="font-size:9px;color:#666">850K followers</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trending View -->
+        <div class="aw-view" id="awViewTrending" style="display:none">
+          <div style="padding:18px 18px 0">
+            <div class="sec-title" style="font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#888;padding:4px 0 12px">Trending — All Music</div>
+          </div>
+          <div class="track-list" style="padding:0 18px">
+            <div class="aw-track" style="cursor:pointer">
+              <span class="aw-tr-num">1</span>
+              <div class="aw-tr-art" style="background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%)">
+                <svg viewBox="0 0 24 24" fill="white" style="width:20px;height:20px"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              </div>
+              <div class="aw-tr-info">
+                <div class="aw-tr-name">TRENDING TRACK #1</div>
+                <div class="aw-tr-artist">Popular Artist</div>
+              </div>
+              <div class="aw-tr-dur">3:45</div>
+            </div>
+            <div class="aw-track" style="cursor:pointer">
+              <span class="aw-tr-num">2</span>
+              <div class="aw-tr-art" style="background:linear-gradient(135deg,#ffecd2 0%,#fcb69f 100%)">
+                <svg viewBox="0 0 24 24" fill="white" style="width:20px;height:20px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <div class="aw-tr-info">
+                <div class="aw-tr-name">VIRAL HIT</div>
+                <div class="aw-tr-artist">Trending Artist</div>
+              </div>
+              <div class="aw-tr-dur">2:58</div>
+            </div>
+            <div class="aw-track" style="cursor:pointer">
+              <span class="aw-tr-num">3</span>
+              <div class="aw-tr-art" style="background:linear-gradient(135deg,#a8edea 0%,#fed6e3 100%)">
+                <svg viewBox="0 0 24 24" fill="white" style="width:20px;height:20px"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <div class="aw-tr-info">
+                <div class="aw-tr-name">CHART TOPPER</div>
+                <div class="aw-tr-artist">Famous Artist</div>
+              </div>
+              <div class="aw-tr-dur">4:12</div>
+            </div>
+            <div class="aw-track" style="cursor:pointer">
+              <span class="aw-tr-num">4</span>
+              <div class="aw-tr-art" style="background:linear-gradient(135deg,#667eea 0%,#764ba2 100%)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" style="width:20px;height:20px"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+              </div>
+              <div class="aw-tr-info">
+                <div class="aw-tr-name">NEW RELEASE</div>
+                <div class="aw-tr-artist">Rising Star</div>
+              </div>
+              <div class="aw-tr-dur">3:33</div>
+            </div>
+            <div class="aw-track" style="cursor:pointer">
+              <span class="aw-tr-num">5</span>
+              <div class="aw-tr-art" style="background:linear-gradient(135deg,#ff9a9e 0%,#fecfef 100%)">
+                <svg viewBox="0 0 24 24" fill="white" style="width:20px;height:20px"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+              </div>
+              <div class="aw-tr-info">
+                <div class="aw-tr-name">SUMMER ANTHEM</div>
+                <div class="aw-tr-artist">DJ Producer</div>
+              </div>
+              <div class="aw-tr-dur">3:21</div>
+            </div>
+            <div class="aw-track" style="cursor:pointer">
+              <span class="aw-tr-num">6</span>
+              <div class="aw-tr-art" style="background:linear-gradient(135deg,#4facfe 0%,#00f2fe 100%)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" style="width:20px;height:20px"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+              </div>
+              <div class="aw-tr-info">
+                <div class="aw-tr-name">CLUB BANGER</div>
+                <div class="aw-tr-artist">Electronic Artist</div>
+              </div>
+              <div class="aw-tr-dur">4:05</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Playlists View -->
+        <div class="aw-view" id="awViewPlaylists" style="display:none">
+          <div class="artist-hero" style="position:relative;min-height:200px;background:#141414;overflow:hidden;display:flex;align-items:flex-end;margin-bottom:18px">
+            <div class="artist-hero-overlay" style="position:absolute;inset:0;background:linear-gradient(160deg,#1e1e1e 0%,#0c0c0c 60%,rgba(0,0,0,.9) 100%)"></div>
+            <div class="artist-hero-info" style="position:relative;z-index:1;display:flex;align-items:flex-end;gap:16px;padding:20px;width:100%">
+              <div class="artist-avatar" style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,.5)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" style="width:32px;height:32px"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+              </div>
+              <div>
+                <div class="artist-name" style="font-family:'Unbounded',sans-serif;font-weight:900;font-size:22px;color:#fff;letter-spacing:.04em">ПЛЕЙЛИСТЫ</div>
+                <div class="artist-handle" style="font-size:9px;color:rgba(255,255,255,.55);margin-top:5px">@user</div>
+                <div class="artist-stats" style="display:flex;gap:14px;margin-top:6px;font-size:9px;color:rgba(255,255,255,.6);letter-spacing:.04em"><span>4 плейлистов</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="playlist-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:14px;padding:0 18px 18px">
+            <div class="pl-card" style="cursor:pointer;transition:opacity .12s;position:relative" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+              <div class="pl-card-art single" style="width:100%;aspect-ratio:1;border-radius:8px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);overflow:hidden;position:relative;margin-bottom:8px;display:flex;align-items:center;justify-content:center">
+                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" style="width:48px;height:48px;opacity:0.9"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+              </div>
+              <div class="pl-card-info" style="padding:0 2px">
+                <div class="pl-card-title" style="font-size:10px;font-weight:700;color:#e5e5e5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:3px">My Playlist #1</div>
+                <div class="pl-card-meta" style="font-size:9px;color:#666">12 треков</div>
+              </div>
+            </div>
+            <div class="pl-card" style="cursor:pointer;transition:opacity .12s;position:relative" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+              <div class="pl-card-art single" style="width:100%;aspect-ratio:1;border-radius:8px;background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%);overflow:hidden;position:relative;margin-bottom:8px;display:flex;align-items:center;justify-content:center">
+                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" style="width:48px;height:48px;opacity:0.9"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+              </div>
+              <div class="pl-card-info" style="padding:0 2px">
+                <div class="pl-card-title" style="font-size:10px;font-weight:700;color:#e5e5e5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:3px">Favorites</div>
+                <div class="pl-card-meta" style="font-size:9px;color:#666">24 трека</div>
+              </div>
+            </div>
+            <div class="pl-card" style="cursor:pointer;transition:opacity .12s;position:relative" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+              <div class="pl-card-art single" style="width:100%;aspect-ratio:1;border-radius:8px;background:linear-gradient(135deg,#4facfe 0%,#00f2fe 100%);overflow:hidden;position:relative;margin-bottom:8px;display:flex;align-items:center;justify-content:center">
+                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" style="width:48px;height:48px;opacity:0.9"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </div>
+              <div class="pl-card-info" style="padding:0 2px">
+                <div class="pl-card-title" style="font-size:10px;font-weight:700;color:#e5e5e5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:3px">Night Vibes</div>
+                <div class="pl-card-meta" style="font-size:9px;color:#666">18 треков</div>
+              </div>
+            </div>
+            <div class="pl-card" style="cursor:pointer;transition:opacity .12s;position:relative" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+              <div class="pl-card-art single" style="width:100%;aspect-ratio:1;border-radius:8px;background:linear-gradient(135deg,#fa709a 0%,#fee140 100%);overflow:hidden;position:relative;margin-bottom:8px;display:flex;align-items:center;justify-content:center">
+                <svg viewBox="0 0 24 24" fill="white" style="width:48px;height:48px;opacity:0.9"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              </div>
+              <div class="pl-card-info" style="padding:0 2px">
+                <div class="pl-card-title" style="font-size:10px;font-weight:700;color:#e5e5e5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:3px">Workout Mix</div>
+                <div class="pl-card-meta" style="font-size:9px;color:#666">30 треков</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1284,7 +1625,7 @@ footer{
         <div class="aw-pl-bar"><div class="aw-pl-fill"></div></div>
       </div>
       <div class="aw-pl-right">
-        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2.5"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2.5"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
         <div class="aw-vol"><div class="aw-vol-fill"></div></div>
       </div>
     </div>
@@ -1430,11 +1771,11 @@ footer{
   <p class="cta-sub reveal">Открой источник. Подключись к SoundCloud.<br>Слушай без границ.</p>
 
   <div class="cta-btns reveal">
-    <a class="btn-dl" href="https://www.dropbox.com/scl/fi/nmgd4ge2w9rruj6asvvwx/UNTITLED-Setup-0.4.0.exe?rlkey=aat4nsqai671qo21h1e4enft0&st=kxztcjvn&dl=1">
+    <a class="btn-dl" href="https://www.dropbox.com/scl/fi/cwk76u7i1ohnh1vxp5c0p/UNTITLED-Setup-0.5.0.exe?rlkey=opta5dczlypvzl91tnfdqwadn&st=4toxq9m0&dl=1">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/></svg>
       Windows
     </a>
-    <a class="btn-dl btn-dl-mac" href="https://www.dropbox.com/scl/fi/b3u7os6zk8ac8asoufquc/UNTITLED-0.4.0-universal.dmg?rlkey=4ye55tgcd3m3u6u6zo61x3996&st=t2b28nxg&dl=1">
+    <a class="btn-dl btn-dl-mac" href="https://www.dropbox.com/scl/fi/9oqywz90whdecdmbj9sp2/UNTITLED-0.5.0-universal.dmg?rlkey=1kb9hbdcx15ij7yrxha5hr718&st=x8ch2spx&dl=1">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
       macOS
     </a>
@@ -1450,7 +1791,18 @@ footer{
     </div>
   </div>
 
-  <p class="cta-meta reveal">Бесплатно и с открытым исходным кодом. <a href="#">Лицензия MIT.</a></p>
+  <div style="margin-top:32px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap" class="reveal">
+    <a class="btn-gh" href="https://forms.gle/V1CfkP8CTNCpV3y77" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      Заявка на редактора
+    </a>
+    <a class="btn-gh" href="https://forms.gle/EunNvWMsE363YqqXA" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      Заявка на верификацию
+    </a>
+  </div>
+
+  <p class="cta-meta reveal" style="margin-top:48px;font-family:'Unbounded',sans-serif;font-weight:600;font-size:13px;letter-spacing:.15em">Лицензия Sp!Ner GANG</p>
 </section>
 
 <!-- FOOTER -->
@@ -1584,6 +1936,128 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
   });
 });
+
+// ─── INTERACTIVE MOCKUP ───
+(function() {
+  let currentTrack = 0;
+  let isPlaying = false;
+  
+  // Navigation
+  document.querySelectorAll('.aw-nav-item').forEach(item => {
+    item.addEventListener('click', function() {
+      const view = this.dataset.view;
+      if (!view) return;
+      
+      // Update active nav
+      document.querySelectorAll('.aw-nav-item').forEach(i => i.classList.remove('active'));
+      this.classList.add('active');
+      
+      // Show view
+      document.querySelectorAll('.aw-view').forEach(v => v.style.display = 'none');
+      const viewEl = document.getElementById('awView' + view.charAt(0).toUpperCase() + view.slice(1));
+      if (viewEl) viewEl.style.display = 'block';
+    });
+  });
+  
+  // Track click
+  document.querySelectorAll('.aw-track').forEach(track => {
+    track.addEventListener('click', function() {
+      const trackId = parseInt(this.dataset.track);
+      playTrack(trackId);
+    });
+  });
+  
+  // Play button
+  const playBtn = document.getElementById('awPlayBtn');
+  if (playBtn) {
+    playBtn.addEventListener('click', () => {
+      playTrack(0);
+    });
+  }
+  
+  // Shuffle button
+  const shuffleBtn = document.getElementById('awShuffleBtn');
+  if (shuffleBtn) {
+    shuffleBtn.addEventListener('click', () => {
+      const randomTrack = Math.floor(Math.random() * 5);
+      playTrack(randomTrack);
+    });
+  }
+  
+  // Player controls
+  const playerPlayBtn = document.querySelector('.aw-pl-btn.main');
+  if (playerPlayBtn) {
+    playerPlayBtn.addEventListener('click', togglePlay);
+  }
+  
+  // Filter buttons
+  document.querySelectorAll('.aw-likes-filter-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.aw-likes-filter-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      
+      const filter = this.dataset.filter;
+      const tracks = document.querySelectorAll('.aw-track');
+      
+      if (filter === 'all') {
+        tracks.forEach(t => t.style.display = 'flex');
+      } else if (filter === 'soundcloud') {
+        tracks.forEach((t, i) => {
+          t.style.display = (i === 1 || i === 2 || i === 3) ? 'flex' : 'none';
+        });
+      } else if (filter === 'untitled') {
+        tracks.forEach((t, i) => {
+          t.style.display = (i === 0 || i === 4) ? 'flex' : 'none';
+        });
+      }
+    });
+  });
+  
+  function playTrack(trackId) {
+    currentTrack = trackId;
+    isPlaying = true;
+    
+    // Update tracks
+    document.querySelectorAll('.aw-track').forEach((t, i) => {
+      t.classList.remove('playing');
+      const num = t.querySelector('.aw-tr-num');
+      if (i === trackId) {
+        t.classList.add('playing');
+        num.textContent = '▶';
+      } else {
+        num.textContent = (i + 1).toString();
+      }
+    });
+    
+    // Update player
+    const track = document.querySelectorAll('.aw-track')[trackId];
+    if (track) {
+      const title = track.querySelector('.aw-tr-name').textContent;
+      const artist = track.querySelector('.aw-tr-artist').textContent;
+      document.querySelector('.aw-pl-title').textContent = title;
+      document.querySelector('.aw-pl-artist').textContent = artist;
+    }
+    
+    // Update play button
+    updatePlayButton();
+  }
+  
+  function togglePlay() {
+    isPlaying = !isPlaying;
+    updatePlayButton();
+  }
+  
+  function updatePlayButton() {
+    const btn = document.querySelector('.aw-pl-btn.main');
+    const svg = btn.querySelector('svg');
+    
+    if (isPlaying) {
+      svg.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+    } else {
+      svg.innerHTML = '<path d="M8 5v14l11-7z"/>';
+    }
+  }
+})();
 </script>
 </body>
 </html>
